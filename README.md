@@ -16,8 +16,14 @@ Cada método também tem uma anotação identificando qual é o método HTTP del
 
 As classes de domínio possuem atributos, construtores, getters e setters, hashCode e equals, e serializable (padrão: 1L)
 
-##### hashCode e equals
+#### > hashCode e equals
  
  Esses métodos são necessários para que o objeto seja comparado pelo seu conteúdo e não pelo ponteiro de memória. Ou seja, são operaçes para comparar objetos por valor.
 
 Geralmente um objeto é comparado apenas pelo o id. Se o id for diferente, os objetos tbm são difentes. Então pode escolher só ele parar criar o método.
+
+#### > serializable
+
+É uma interface que diz que a classe que está implementado ela, pode ser convertida em uma sequência de bytes.
+
+Isso serve para que os objetos possam ser gravados em artigos, trafegar em redes.... isso é uma exigência do Java.
