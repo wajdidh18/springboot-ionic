@@ -39,6 +39,13 @@ Além disso é preciso colocar no pom.xml a dependência do banco de dados que s
 > As dependências ficam no arquivo `pom.xml`
 
 
+## Repository
+
+São interfaces que extendem a interface `JpaRepository` (no caso de usando JPA haha), passando os parâmetros: classe domínio está sendo representada e o tipo do atributo Id.
+
+Em cima da interface, coloca a anotação `@Repository`
+
+
 ## Arquitetura do projeto
 
 ![alt text](https://github.com/amandaisabelalima/springboot-ionic/blob/master/arquitetura_projeto.png)
