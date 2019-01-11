@@ -27,3 +27,14 @@ Geralmente um objeto é comparado apenas pelo o id. Se o id for diferente, os ob
 É uma interface que diz que a classe que está implementado ela, pode ser convertida em uma sequência de bytes.
 
 Isso serve para que os objetos possam ser gravados em artigos, trafegar em redes.... isso é uma exigência do Java.
+
+--
+
+Nas classes de domínio também é preciso colocar as anotações para mapear essas informações no banco de dados. Anotações como: @Entity, @Id, @GeneratedValue(strategy=GenerationType.IDENTITY)....
+
+Além disso é preciso colocar no pom.xml a dependência do banco de dados que será utilizado.
+
+> As informaçes de conexão com o banco ficam no arquivo `application.properties`
+
+> As dependências ficam no arquivo `pom.xml`
+
