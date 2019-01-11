@@ -41,5 +41,10 @@ Além disso é preciso colocar no pom.xml a dependência do banco de dados que s
 
 ## Arquitetura do projeto
 
-![alt text](https://github.com/amandaisabelalima/springboot-ionic/blob/master/arquitetura_projeto.png "Arquitetura usada")
+![alt text](https://github.com/amandaisabelalima/springboot-ionic/blob/master/arquitetura_projeto.png)
+
+**Camada de Serviço:**  responsável por oferecer operações e consultas para os controladores. Essa camada não tem contato nenhum com alguma tecnologia específica (não tem contado com o banco, com o REST, tela, nada). Aqui ficam as regras de negócio.
+
+**Camada de acesso a dados:** responsável por conversar com o banco de dados. Nela ficam as operações de salvar, excluir, etc. Alguns chamam de Repository ou DAO
+
 
