@@ -4,7 +4,7 @@ Projeto Java usando Spring Boot, Hibernate, REST e Ionic - Curso Udemy [aqui](ht
 Esse projeto está sendo feito para estudar essas tecnologias. 
 Sendo assim, aqui farei anotações de coisas importantes para não esquecer durante o aprendizado.
 
-## Controllers
+## Controller
 
 Os Controllers ficam dentro da pasta "resource". E acima do nome tem a anotação `@RestController` e `@RequestMapping(value="nome-do-endpoins-rest")`. Essa segunda anotação é para mapear a classe com um endpoint.
 
@@ -12,7 +12,7 @@ Cada método também tem uma anotação identificando qual é o método HTTP del
 `@GetMapping` ou `@RequestMapping(method=RequestMethod.GET)`
 
 
-## Domínios
+## Domain
 
 As classes de domínio possuem atributos, construtores, getters e setters, hashCode e equals, e serializable (padrão: 1L)
 
