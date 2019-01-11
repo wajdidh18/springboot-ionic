@@ -10,3 +10,12 @@ Os Controllers ficam dentro da pasta "resource". E acima do nome tem a anotaçã
 
 Cada método também tem uma anotação identificando qual é o método HTTP dele. Isso pode ser feito de duas maneiras. Por exemplo:
 `@GetMapping` ou `@RequestMapping(method=RequestMethod.GET)`
+
+
+## Domínios
+
+As classes de domínio possuem atributos, construtores, getters e setters, hashCode e equals, e serializable (padrão: 1L)
+
+⋅⋅* hashCode e equals
+⋅⋅⋅ Esses métodos são necessários para que o objeto seja comparado pelo seu conteúdo e não pelo ponteiro de memória. Ou seja, são operaçes para comparar objetos por valor.
+⋅⋅⋅ Geralmente 
