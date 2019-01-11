@@ -30,7 +30,7 @@ Isso serve para que os objetos possam ser gravados em artigos, trafegar em redes
 
 --
 
-Nas classes de domínio também é preciso colocar as anotações para mapear essas informações no banco de dados. Anotações como: @Entity, @Id, @GeneratedValue(strategy=GenerationType.IDENTITY)....
+Nas classes de domínio também é preciso colocar as anotações para mapear essas informações no banco de dados. Anotações como: `@Entity`, `@Id`, `@GeneratedValue(strategy=GenerationType.IDENTITY)`....
 
 Além disso é preciso colocar no pom.xml a dependência do banco de dados que será utilizado.
 
