@@ -4,7 +4,7 @@ Projeto Java usando Spring Boot, Hibernate, REST e Ionic - Curso Udemy [aqui](ht
 Esse projeto está sendo feito para estudar essas tecnologias. 
 Sendo assim, aqui farei anotações de coisas importantes para não esquecer durante o aprendizado.
 
-## Controllers
+## Controller
 
 Os Controllers ficam dentro da pasta "resource". E acima do nome tem a anotação `@RestController` e `@RequestMapping(value="nome-do-endpoins-rest")`. Essa segunda anotação é para mapear a classe com um endpoint.
 
@@ -12,7 +12,7 @@ Cada método também tem uma anotação identificando qual é o método HTTP del
 `@GetMapping` ou `@RequestMapping(method=RequestMethod.GET)`
 
 
-## Domínios
+## Domain
 
 As classes de domínio possuem atributos, construtores, getters e setters, hashCode e equals, e serializable (padrão: 1L)
 
@@ -37,4 +37,33 @@ Além disso é preciso colocar no pom.xml a dependência do banco de dados que s
 > As informaçes de conexão com o banco ficam no arquivo `application.properties`
 
 > As dependências ficam no arquivo `pom.xml`
+
+
+## Repository
+
+São interfaces que extendem a interface `JpaRepository` (no caso de usando JPA haha), passando os parâmetros: classe domínio está sendo representada e o tipo do atributo Id.
+
+Em cima da interface, coloca a anotação `@Repository`
+
+
+## Service
+
+Nessas classes é necessário instanciar a interface Repository correspondente. No Spring existe a annotation `@Autowired` para isso, que instancia automaticamente.
+
+Então cria um objeto repository com a anotação em cima:
+```java
+@Autowired
+private CategoriaRepository repo;
+```
+
+
+
+## Arquitetura do projeto
+
+![alt text](https://github.com/amandaisabelalima/springboot-ionic/blob/master/arquitetura_projeto.png)
+
+**Camada de Serviço:**  responsável por oferecer operações e consultas para os controladores. Essa camada não tem contato nenhum com alguma tecnologia específica (não tem contado com o banco, com o REST, tela, nada). Aqui ficam as regras de negócio.
+
+**Camada de acesso a dados:** responsável por conversar com o banco de dados. Nela ficam as operações de salvar, excluir, etc. Alguns chamam de Repository ou DAO
+
 
