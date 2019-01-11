@@ -46,6 +46,18 @@ São interfaces que extendem a interface `JpaRepository` (no caso de usando JPA 
 Em cima da interface, coloca a anotação `@Repository`
 
 
+## Service
+
+Nessas classes é necessário instanciar a interface Repository correspondente. No Spring existe a annotation `@Autowired` para isso, que instancia automaticamente.
+
+Então cria um objeto repository com a anotação em cima:
+```java
+@Autowired
+private CategoriaRepository repo;
+```
+
+
+
 ## Arquitetura do projeto
 
 ![alt text](https://github.com/amandaisabelalima/springboot-ionic/blob/master/arquitetura_projeto.png)
