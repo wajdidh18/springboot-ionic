@@ -53,7 +53,7 @@ Quando entre duas tabelas existe uma associação many to maxy, é preciso infor
 Exemplo de um relacionamento Produtos com Categoria:
 
 Na classe Produto faz a seguinte annotation:
-```
+```java
 @ManyToMany
 @JoinTable(name = "PRODUTO_CATEGORIA",
            joinColumns = @JoinColumn(name = "produto_id"),
@@ -64,7 +64,7 @@ private List<Categoria> categorias = new ArrayList<>();
 Essa anottation está informando que é uma relação many to many, a tabela intermediária que será criada no banco será chamada de "PRODUTO_CATEGORIA", o nome da foreign key da classe em que está será "produto_id", e por fim, o nome da foreign key da outra classe "categoria_id".
 
 Depois disso, na classe Categoria precisa ter a annotation:
-```
+```java
 @ManyToMany(mappedBy="categorias")
 private List<Produto> produtos = new ArrayList<>();
 ```
