@@ -45,6 +45,30 @@ Além disso é preciso colocar no pom.xml a dependência do banco de dados que s
 
 > As dependências ficam no arquivo `pom.xml`
 
+--
+
+#### > associação muitos para muitos
+Quando entre duas tabelas existe uma associação many to maxy, é preciso informar isso através de annotations.
+
+Exemplo de um relacionamento Produtos com Categoria:
+
+Na classe Produto faz a seguinte annotation:
+```
+@ManyToMany
+@JoinTable(name = "PRODUTO_CATEGORIA",
+           joinColumns = @JoinColumn(name = "produto_id"),
+           inverseJoinColumns = @JoinColumn(name = "categoria_id")
+)
+private List<Categoria> categorias = new ArrayList<>();
+```
+Essa anottation está informando que é uma relação many to many, a tabela intermediária que será criada no banco será chamada de "PRODUTO_CATEGORIA", o nome da foreign key da classe em que está será "produto_id", e por fim, o nome da foreign key da outra classe "categoria_id".
+
+Depois disso, na classe Categoria precisa ter a annotation:
+```
+@ManyToMany(mappedBy="categorias")
+private List<Produto> produtos = new ArrayList<>();
+```
+Essa annotation diz que o mapeamento já foi feito no atributo "categorias" da outra Classe.
 
 ## Repository
 
