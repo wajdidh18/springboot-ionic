@@ -11,6 +11,13 @@ Os Controllers ficam dentro da pasta "resource". E acima do nome tem a anotaçã
 Cada método também tem uma anotação identificando qual é o método HTTP dele. Isso pode ser feito de duas maneiras. Por exemplo:
 `@GetMapping` ou `@RequestMapping(method=RequestMethod.GET)`
 
+Nessas classes é necessário instanciar a interface Service correspondente. No Spring existe a annotation `@Autowired` para isso, que instancia automaticamente.
+
+Então cria um objeto repository com a anotação em cima:
+```java
+@Autowired
+private CategoriaService service;
+```
 
 ## Domain
 
