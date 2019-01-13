@@ -159,15 +159,15 @@ Referências úteis:
 
 
 
- [Controller]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#controller
- [hashCode e equals]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-hashcode-e-equals
- [serializable]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-serializable
+ [Controller]: https://github.com/amandaisabelalima/springboot-ionicd#controller
+ [hashCode e equals]: https://github.com/amandaisabelalima/springboot-ionic#-hashcode-e-equals
+ [serializable]: https://github.com/amandaisabelalima/springboot-ionic#-serializable
  [associação many-to-many]: https://github.com/amandaisabelalima/springboot-ionic#-associa%C3%A7%C3%A3o-many-to-many
- [@JsonManagedReference e @JsonBackReference]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-jsonmanagedreference-e-jsonbackreference
- [Domain]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#domain
- [Repository]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#repository
- [Service]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#service
- [Exceptions]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#exceptions
- [Arquitetura]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#arquitetura-do-projeto 
+ [@JsonManagedReference e @JsonBackReference]: https://github.com/amandaisabelalima/springboot-ionicd#-jsonmanagedreference-e-jsonbackreference
+ [Domain]: https://github.com/amandaisabelalima/springboot-ionic#domain
+ [Repository]: https://github.com/amandaisabelalima/springboot-ionic#repository
+ [Service]: https://github.com/amandaisabelalima/springboot-ionic#service
+ [Exceptions]: https://github.com/amandaisabelalima/springboot-ionic#exceptions
+ [Arquitetura]: https://github.com/amandaisabelalima/springboot-ionic#arquitetura-do-projeto 
 
 
