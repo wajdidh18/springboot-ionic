@@ -81,7 +81,7 @@ Para resolver isso, são usadas as annotations @JsonManagedReference e @JsonBack
 
 `@JsonManagedReference` é a parte direta da referência  (aquela que é serializada normalmente).
 
-`@JsonBackReference`  é a parte de trás da referência (ela será omitida da serialização). Então, aqui indica que do outro lado da associação já foram buscados os objetos, então esse lado não precisa buscar mais, omitindo assim, a lista de categorias do onjeto de produtos.
+`@JsonBackReference`  é a parte de trás da referência (ela será omitida da serialização). Então, aqui indica que do outro lado da associação já foram buscados os objetos, então esse lado não precisa buscar mais, omitindo assim, a lista de categorias do objeto de produtos.
 
 ## Repository
 
@@ -110,5 +110,20 @@ private CategoriaRepository repo;
 **Camada de Serviço:**  responsável por oferecer operações e consultas para os controladores. Essa camada não tem contato nenhum com alguma tecnologia específica (não tem contado com o banco, com o REST, tela, nada). Aqui ficam as regras de negócio.
 
 **Camada de acesso a dados:** responsável por conversar com o banco de dados. Nela ficam as operações de salvar, excluir, etc. Alguns chamam de Repository ou DAO
+
+
+
+
+
+
+
+
+
+
+Referências úteis:
+- [Jackson – Bidirectional Relationships](https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion)
+
+
+
 
 
