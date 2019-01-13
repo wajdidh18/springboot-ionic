@@ -4,12 +4,12 @@ Projeto Java usando Spring Boot, Hibernate, REST e Ionic - Curso Udemy [aqui](ht
 Esse projeto está sendo feito ao longo do curso para aprender essas tecnologias.
 Sendo assim, aqui farei anotações de coisas importantes (e de forma bem didática) para não esquecer durante o aprendizado.
 
- -  [Controller]
-	- [hashCode e equals]
+ - [Controller]
+ - [Domain]
+ 	- [hashCode e equals]
  	- [serializable]
  	- [associação many-to-many]
  	- [@JsonManagedReference e @JsonBackReference]
- - [Domain]
  - [Repository]
  - [Service]
  - [Exceptions]
