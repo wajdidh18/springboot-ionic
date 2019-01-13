@@ -101,6 +101,29 @@ Então cria um objeto repository com a anotação em cima:
 private CategoriaRepository repo;
 ```
 
+## Exceptions
+
+As exceçes são lançadas nas classes de Service, e a camanda de recurso (Controller) capturam e enviam um json apropriado para a resposta Http.
+
+Para isso, no controller poderia ser inserido um try catch, porém para não ficar muita coisa nessa classe, foi criado uma camada de tratamento (Handler), que intercepta quando ocorre alguma exceção e faz o tratamento.
+
+Nesse projeto, foi criada uma classe de exceção personalizada chamada `ObjectNotFoundException` e o manipulador de exceções do recurso chamado `ResourceExceptionHandler`. Também foi criado a classe `StandardError` para servir como objeto auxiliar, e que possui os atributos do código http, mensagem e instante do erro.
+
+O handler(manipulador de erros) precisa ter a annotation `@ControllerAdvice` e, obrigatoriamente, um método que receba a exceção e as informações da requisição. Dentro no método, instancia a classe auxiliar passando os dados necessários. O método também precisa da annotation `@ExceptionHandler(ObjectNotFoundException.class)` que indica que ele é um tratador de exceção do tipo x.
+
+```java
+@ControllerAdvice
+public class ResourceExceptionHandler {
+
+  @ExceptionHandler(ObjectNotFoundException.class) 
+  public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {		
+		  StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(), e.getMessage(), System.currentTimeMillis());
+		  return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+	}
+ 
+}
+```
+
 
 
 ## Arquitetura do projeto
