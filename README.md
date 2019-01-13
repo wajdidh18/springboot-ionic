@@ -4,6 +4,17 @@ Projeto Java usando Spring Boot, Hibernate, REST e Ionic - Curso Udemy [aqui](ht
 Esse projeto está sendo feito ao longo do curso para aprender essas tecnologias.
 Sendo assim, aqui farei anotações de coisas importantes (e de forma bem didática) para não esquecer durante o aprendizado.
 
+ -  [Controller]
+	- [hashCode e equals]
+ 	- [serializable]
+ 	- [associação many-to-many]
+ 	- [@JsonManagedReference e @JsonBackReference]
+ - [Domain]
+ - [Repository]
+ - [Service]
+ - [Exceptions]
+ - [Arquitetura] 
+
 ## Controller
 
 Os Controllers ficam dentro da pasta "resource". E acima do nome tem a anotação `@RestController` e `@RequestMapping(value="nome-do-endpoins-rest")`. Essa segunda anotação é para mapear a classe com um endpoint.
@@ -47,7 +58,7 @@ Além disso é preciso colocar no pom.xml a dependência do banco de dados que s
 
 --
 
-#### > associação muitos para muitos
+#### > associação many to many
 Quando entre duas tabelas existe uma associação many to maxy, é preciso informar isso através de annotations.
 
 Exemplo de um relacionamento Produtos com Categoria:
@@ -148,5 +159,15 @@ Referências úteis:
 
 
 
+ [Controller]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#controller
+ [hashCode e equals]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-hashcode-e-equals
+ [serializable]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-serializable
+ [associação many-to-many]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-associa%C3%A7%C3%A3o-muitos-para-muitos
+ [@JsonManagedReference e @JsonBackReference]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-jsonmanagedreference-e-jsonbackreference
+ [Domain]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#domain
+ [Repository]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#repository
+ [Service]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#service
+ [Exceptions]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#exceptions
+ [Arquitetura]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#arquitetura-do-projeto 
 
 
