@@ -54,6 +54,7 @@ Exemplo de um relacionamento Produtos com Categoria:
 
 Na classe Produto faz a seguinte annotation:
 ```java
+@JsonBackReference
 @ManyToMany
 @JoinTable(name = "PRODUTO_CATEGORIA",
            joinColumns = @JoinColumn(name = "produto_id"),
@@ -65,12 +66,25 @@ Essa anottation está informando que é uma relação many to many, a tabela int
 
 Depois disso, na classe Categoria precisa ter a annotation:
 ```java
+@JsonManagedReference
 @ManyToMany(mappedBy="categorias")
 private List<Produto> produtos = new ArrayList<>();
 ```
 Essa annotation diz que o mapeamento já foi feito no atributo "categorias" da outra Classe.
 
+
+##### > @JsonManagedReference e @JsonBackReference
+
+Quando o sistema vai tentar serializar o objeto Categorias, cai em uma recursão infinita. Isso acontece porque cada categoria tem uma lista de produtos, e cada produto tem uma lista de categorias... indefinidamente.
+
+Para resolver isso, são usadas as annotations @JsonManagedReference e @JsonBackReference.
+
+`@JsonManagedReference` é a parte direta da referência  (aquela que é serializada normalmente).
+
+`@JsonBackReference`  é a parte de trás da referência (ela será omitida da serialização). Então, aqui indica que do outro lado da associação já foram buscados os objetos, então esse lado não precisa buscar mais, omitindo assim, a lista de categorias do onjeto de produtos.
+
 ## Repository
+
 
 São interfaces que extendem a interface `JpaRepository` (no caso de usando JPA haha), passando os parâmetros: classe domínio está sendo representada e o tipo do atributo Id.
 
