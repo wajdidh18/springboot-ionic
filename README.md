@@ -162,7 +162,7 @@ Referências úteis:
  [Controller]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#controller
  [hashCode e equals]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-hashcode-e-equals
  [serializable]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-serializable
- [associação many-to-many]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-associa%C3%A7%C3%A3o-muitos-para-muitos
+ [associação many-to-many]: https://github.com/amandaisabelalima/springboot-ionic#-associa%C3%A7%C3%A3o-many-to-many
  [@JsonManagedReference e @JsonBackReference]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#-jsonmanagedreference-e-jsonbackreference
  [Domain]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#domain
  [Repository]: https://github.com/amandaisabelalima/springboot-ionic/blob/master/README.md#repository
