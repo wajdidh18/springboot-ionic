@@ -1,8 +1,8 @@
 # Projeto Spring Boot e Ionic
 Projeto Java usando Spring Boot, Hibernate, REST e Ionic - Curso Udemy [aqui](https://www.udemy.com/spring-boot-ionic/)
 
-Esse projeto está sendo feito para estudar essas tecnologias. 
-Sendo assim, aqui farei anotações de coisas importantes para não esquecer durante o aprendizado.
+Esse projeto está sendo feito ao longo do curso para aprender essas tecnologias.
+Sendo assim, aqui farei anotações de coisas importantes (e de forma bem didática) para não esquecer durante o aprendizado.
 
 ## Controller
 
