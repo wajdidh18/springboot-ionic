@@ -9,10 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.amandalima.cursospringbootionic.domain.Categoria;
 import com.amandalima.cursospringbootionic.domain.Cidade;
+import com.amandalima.cursospringbootionic.domain.Cliente;
+import com.amandalima.cursospringbootionic.domain.Endereco;
 import com.amandalima.cursospringbootionic.domain.Estado;
 import com.amandalima.cursospringbootionic.domain.Produto;
+import com.amandalima.cursospringbootionic.domain.enums.TipoCliente;
 import com.amandalima.cursospringbootionic.repositories.CategoriaRepository;
 import com.amandalima.cursospringbootionic.repositories.CidadeRepository;
+import com.amandalima.cursospringbootionic.repositories.ClienteRepository;
+import com.amandalima.cursospringbootionic.repositories.EnderecoRepository;
 import com.amandalima.cursospringbootionic.repositories.EstadoRepository;
 import com.amandalima.cursospringbootionic.repositories.ProdutoRepository;
 
@@ -27,6 +32,10 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 	private EstadoRepository estadoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursoSpringbootIonicApplication.class, args);
@@ -64,6 +73,17 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 		
 		estadoRepository.saveAll(Arrays.asList(estado1, estado2));
 		cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3));
+		
+		Cliente cliente1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "12345678909", TipoCliente.PESSOAFISICA);
+		cliente1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		
+		Endereco endereco1 = new Endereco(null, "Rua Flores", "300", "Apto 203", "Jardim", "38220834", cliente1, cidade1);
+		Endereco endereco2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cliente1, cidade2);
+		
+		cliente1.getEnderecos().addAll(Arrays.asList(endereco1, endereco2));
+		
+		clienteRepository.saveAll(Arrays.asList(cliente1));
+		enderecoRepository.saveAll(Arrays.asList(endereco1, endereco2));
 	}
 
 }
