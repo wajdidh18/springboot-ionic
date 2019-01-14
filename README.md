@@ -112,6 +112,11 @@ Então cria um objeto repository com a anotação em cima:
 private CategoriaRepository repo;
 ```
 
+## Enums
+
+Contructor de Enum é do tipo `private`, e só possui métodos `get`. Não tem os métodos `set` porque uma vez que instancia um tipo enumerado, não pode mais mudar o nome.
+
+
 ## Exceptions
 
 As exceçes são lançadas nas classes de Service, e a camanda de recurso (Controller) capturam e enviam um json apropriado para a resposta Http.
