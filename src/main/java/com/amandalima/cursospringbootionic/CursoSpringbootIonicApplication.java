@@ -1,6 +1,8 @@
 package com.amandalima.cursospringbootionic;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,18 +14,25 @@ import com.amandalima.cursospringbootionic.domain.Cidade;
 import com.amandalima.cursospringbootionic.domain.Cliente;
 import com.amandalima.cursospringbootionic.domain.Endereco;
 import com.amandalima.cursospringbootionic.domain.Estado;
+import com.amandalima.cursospringbootionic.domain.Pagamento;
+import com.amandalima.cursospringbootionic.domain.PagamentoComBoleto;
+import com.amandalima.cursospringbootionic.domain.PagamentoComCartao;
+import com.amandalima.cursospringbootionic.domain.Pedido;
 import com.amandalima.cursospringbootionic.domain.Produto;
+import com.amandalima.cursospringbootionic.domain.enums.EstadoPagamento;
 import com.amandalima.cursospringbootionic.domain.enums.TipoCliente;
 import com.amandalima.cursospringbootionic.repositories.CategoriaRepository;
 import com.amandalima.cursospringbootionic.repositories.CidadeRepository;
 import com.amandalima.cursospringbootionic.repositories.ClienteRepository;
 import com.amandalima.cursospringbootionic.repositories.EnderecoRepository;
 import com.amandalima.cursospringbootionic.repositories.EstadoRepository;
+import com.amandalima.cursospringbootionic.repositories.PagamentoRepository;
+import com.amandalima.cursospringbootionic.repositories.PedidoRepository;
 import com.amandalima.cursospringbootionic.repositories.ProdutoRepository;
 
 @SpringBootApplication
 public class CursoSpringbootIonicApplication implements CommandLineRunner{
-
+	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	@Autowired
@@ -36,6 +45,10 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 	private ClienteRepository clienteRepository;
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursoSpringbootIonicApplication.class, args);
@@ -43,6 +56,7 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+			
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		
@@ -84,6 +98,24 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 		
 		clienteRepository.saveAll(Arrays.asList(cliente1));
 		enderecoRepository.saveAll(Arrays.asList(endereco1, endereco2));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+		
+		Pedido pedido1 = new Pedido(null, sdf.parse("30/09/2017 10:32"), cliente1, endereco1);
+		Pedido pedido2 = new Pedido(null, sdf.parse("10/10/2017 19:35"), cliente1, endereco2);
+		
+		Pagamento pgto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, pedido1, 6);
+		pedido1.setPagamento(pgto1);
+		
+		Pagamento pgto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, pedido2, sdf.parse("20/10/2017 00:00"), null);
+		pedido2.setPagamento(pgto2);
+		
+		cliente1.getPedidos().addAll(Arrays.asList(pedido1, pedido2));
+		
+		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
+		pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2));
+	
 	}
 
 }
