@@ -106,7 +106,7 @@ public abstract class Pagamento implements Serializable{
 
 - No atributo *pedido* a annotation `@MapsId` garante que o id do pagamento seja o mesmo do id do pedido e que cada Pagamento pertença a apenas 1 pedido (one to one).
 
-- A annotation `@Inheritance(strategy=InheritanceType.JOINED)` na classe indica que é para criar uma tabela só, juntando os atributos das classes filhas.
+- A annotation `@Inheritance(strategy=InheritanceType.JOINED)` na classe indica que é para criar uma tabela para cada classe filha.
 
 Classe Pedido:
 ```java
