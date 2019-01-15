@@ -105,7 +105,7 @@ public class Pagamento implements Serializable{
 
 - No atributo *pedido* a annotation `@MapsId` garante que o id do pagamento seja o mesmo do id do pedido e que cada Pagamento pertença a apenas 1 pedido (one to one).
 
-Claase Pedido:
+Classe Pedido:
 ```java
 @Entity
 public class Pedido implements Serializable{
