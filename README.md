@@ -91,7 +91,7 @@ O mapeamento em casos assim, fica do seguinte modo:
 Classe Pagamento:
 ```java
 @Entity
-public class Pagamento implements Serializable{
+public abstract class Pagamento implements Serializable{
 	@Id
 	private Integer id;
 	
