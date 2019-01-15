@@ -91,6 +91,7 @@ O mapeamento em casos assim, fica do seguinte modo:
 Classe Pagamento:
 ```java
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Pagamento implements Serializable{
 	@Id
 	private Integer id;
@@ -104,6 +105,8 @@ public abstract class Pagamento implements Serializable{
 - No atributo *id* não coloca a annotation `@GeneratedValue(strategy=GenerationType.IDENTITY)` porque ele não vai ser gerado automaticamente. Ao contrário, ele vai ser o mesmo que o id da entidade Pedido.
 
 - No atributo *pedido* a annotation `@MapsId` garante que o id do pagamento seja o mesmo do id do pedido e que cada Pagamento pertença a apenas 1 pedido (one to one).
+
+- A annotation `@Inheritance(strategy=InheritanceType.JOINED)` na classe indica que é para criar uma tabela só, juntando os atributos das classes filhas.
 
 Classe Pedido:
 ```java
