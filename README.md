@@ -83,6 +83,42 @@ private List<Produto> produtos = new ArrayList<>();
 ```
 Essa annotation diz que o mapeamento já foi feito no atributo "categorias" da outra Classe.
 
+#### > associação one to one
+Aqui no projeto, as entidades Pedido e Pagamento possuem relacionamento um para um e por isso, o id do pagamento será o mesmo do id do pedido correspondente.
+
+O mapeamento em casos assim, fica do seguinte modo:
+
+Classe Pagamento:
+```java
+@Entity
+public class Pagamento implements Serializable{
+	@Id
+	private Integer id;
+	
+	@OneToOne(mappedBy="pagamento")
+	@JoinColumn(name="pedido_id")
+	@MapsId
+	private Pedido pedido;
+	...
+```
+- No atributo *id* não coloca a annotation `@GeneratedValue(strategy=GenerationType.IDENTITY)` porque ele não vai ser gerado automaticamente. Ao contrário, ele vai ser o mesmo que o id da entidade Pedido.
+
+- No atributo *pedido* a annotation `@MapsId` garante que o id do pagamento seja o mesmo do id do pedido e que cada Pagamento pertença a apenas 1 pedido (one to one).
+
+Claase Pedido:
+```java
+@Entity
+public class Pedido implements Serializable{
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
+	private Pagamento pagamento;
+	...
+```
+- `cascade=CascadeType.ALL` precisa ser informado, para que todas as operações envolvendo o Pedido sejam feitas em cascata. Ou seja, nas operaçes de salvar, deletar, editar realizadas no Pedido, também serão feitas no Pagamento equivalente, garantindo a integridade das informações.
+
 
 ##### > @JsonManagedReference e @JsonBackReference
 
