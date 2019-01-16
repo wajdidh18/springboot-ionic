@@ -9,6 +9,8 @@ Sendo assim, aqui farei anotações de coisas importantes (e de forma bem didát
  	- [hashCode e equals]
  	- [serializable]
  	- [associação many-to-many]
+	- [associação one-to-one]
+	- [tabela com chave composta]
  	- [@JsonManagedReference e @JsonBackReference]
  - [Repository]
  - [Service]
@@ -122,8 +124,68 @@ public class Pedido implements Serializable{
 ```
 - `cascade=CascadeType.ALL` precisa ser informado, para que todas as operações envolvendo o Pedido sejam feitas em cascata. Ou seja, nas operaçes de salvar, deletar, editar realizadas no Pedido, também serão feitas no Pagamento equivalente, garantindo a integridade das informações.
 
+#### > tabela com chave composta
 
-##### > @JsonManagedReference e @JsonBackReference
+Uma associação onde já chave primária na tabela intermediária é feita um pouco diferente das outras associações. Nesse projeto, ela ocorre no relacionamento Pedido x Produto, onde há uma tabela intermediária chamada ItemPedido.
+
+No java, criamos uma classe ItemPedido sem um id próprio. Quem vai identificar ela serãos os ids associados (chave composta do pedido e produto). 
+
+Para representar a chave composta, foi criado uma classe auxiliar chamada `ItemPedidoChaveComposta`, e nela há as referências para pedido e produto.
+
+```java
+@Embeddable 
+public class ItemPedidoChaveComposta implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@ManyToOne
+	@JoinColumn(name="pedido_id")
+	private Pedido pedido;
+	
+	@ManyToOne
+	@JoinColumn(name="produto_id")
+	private Produto produto;
+	
+	...
+```
+
+- Classes com esse propósito precisam, obrigatoriamente, ter a implementação do Serializable, os gets/sets dos atributos e hashCode e Equals (com as dus referências).
+- a annotation `@Embeddable` indica que essa classe é um subtipo
+- não esquecer de fazer o mapeamento nas classes de Pedido e Produto também, por exemplo:
+
+```java
+public class Produto implements Serializable{
+	...
+	@OneToMany(mappedBy="id.produto")
+	private Set<ItemPedido> itens = new HashSet<>(); 
+	...
+}
+```
+
+Depois de criada a classe auxiliar, na classe `ItemPedido`, criamos o atributo id da chave composta e no construtor, colocamos pedido e produto para serem informados separados, e no método ajustamos:
+```java
+@Entity
+public class ItemPedido implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	@EmbeddedId
+	private ItemPedidoChaveComposta id = new ItemPedidoChaveComposta();
+	
+	...
+	
+	public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double preco) {
+		super();
+		id.setPedido(pedido);
+		id.setProduto(produto);
+		this.desconto = desconto;
+		this.quantidade = quantidade;
+		this.preco = preco;
+	}
+	...
+```
+
+- `@EmbeddedId` indica que esse atributo é um id embutido em um tipo auxiliar
+
+#### > @JsonManagedReference e @JsonBackReference
 
 Quando o sistema vai tentar serializar o objeto Categorias, cai em uma recursão infinita. Isso acontece porque cada categoria tem uma lista de produtos, e cada produto tem uma lista de categorias... indefinidamente.
 
@@ -207,6 +269,8 @@ Referências úteis:
  [hashCode e equals]: https://github.com/amandaisabelalima/springboot-ionic#-hashcode-e-equals
  [serializable]: https://github.com/amandaisabelalima/springboot-ionic#-serializable
  [associação many-to-many]: https://github.com/amandaisabelalima/springboot-ionic#-associa%C3%A7%C3%A3o-many-to-many
+ [associação one-to-one]:https://github.com/amandaisabelalima/springboot-ionic#-associa%C3%A7%C3%A3o-one-to-one
+ [tabela com chave composta]:https://github.com/amandaisabelalima/springboot-ionic#-tabela-com-chave-composta
  [@JsonManagedReference e @JsonBackReference]: https://github.com/amandaisabelalima/springboot-ionic#-jsonmanagedreference-e-jsonbackreference
  [Domain]: https://github.com/amandaisabelalima/springboot-ionic#domain
  [Repository]: https://github.com/amandaisabelalima/springboot-ionic#repository
