@@ -160,6 +160,26 @@ public class Produto implements Serializable{
 }
 ```
 
+Depois de criada a classe auxiliar, na classe `ItemPedido`, criamos o atributo id da chave composta e no construtor, colocamos pedido e produto para serem informados separados, e no método ajustamos:
+```java
+@Entity
+public class ItemPedido implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	private ItemPedidoChaveComposta id = new ItemPedidoChaveComposta();
+	
+	...
+	
+	public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double preco) {
+		super();
+		id.setPedido(pedido);
+		id.setProduto(produto);
+		this.desconto = desconto;
+		this.quantidade = quantidade;
+		this.preco = preco;
+	}
+	...
+```
 
 #### > @JsonManagedReference e @JsonBackReference
 
