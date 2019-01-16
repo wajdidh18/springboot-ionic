@@ -246,6 +246,7 @@ Referências úteis:
  [serializable]: https://github.com/amandaisabelalima/springboot-ionic#-serializable
  [associação many-to-many]: https://github.com/amandaisabelalima/springboot-ionic#-associa%C3%A7%C3%A3o-many-to-many
  [associação one-to-one]:https://github.com/amandaisabelalima/springboot-ionic#-associa%C3%A7%C3%A3o-one-to-one
+ [tabela com chave composta]:https://github.com/amandaisabelalima/springboot-ionic#-tabela-com-chave-composta
  [@JsonManagedReference e @JsonBackReference]: https://github.com/amandaisabelalima/springboot-ionic#-jsonmanagedreference-e-jsonbackreference
  [Domain]: https://github.com/amandaisabelalima/springboot-ionic#domain
  [Repository]: https://github.com/amandaisabelalima/springboot-ionic#repository
