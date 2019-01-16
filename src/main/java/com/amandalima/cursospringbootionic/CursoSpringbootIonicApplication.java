@@ -14,6 +14,7 @@ import com.amandalima.cursospringbootionic.domain.Cidade;
 import com.amandalima.cursospringbootionic.domain.Cliente;
 import com.amandalima.cursospringbootionic.domain.Endereco;
 import com.amandalima.cursospringbootionic.domain.Estado;
+import com.amandalima.cursospringbootionic.domain.ItemPedido;
 import com.amandalima.cursospringbootionic.domain.Pagamento;
 import com.amandalima.cursospringbootionic.domain.PagamentoComBoleto;
 import com.amandalima.cursospringbootionic.domain.PagamentoComCartao;
@@ -26,6 +27,7 @@ import com.amandalima.cursospringbootionic.repositories.CidadeRepository;
 import com.amandalima.cursospringbootionic.repositories.ClienteRepository;
 import com.amandalima.cursospringbootionic.repositories.EnderecoRepository;
 import com.amandalima.cursospringbootionic.repositories.EstadoRepository;
+import com.amandalima.cursospringbootionic.repositories.ItemPedidoRepository;
 import com.amandalima.cursospringbootionic.repositories.PagamentoRepository;
 import com.amandalima.cursospringbootionic.repositories.PedidoRepository;
 import com.amandalima.cursospringbootionic.repositories.ProdutoRepository;
@@ -49,6 +51,8 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursoSpringbootIonicApplication.class, args);
@@ -60,19 +64,19 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		
-		Produto p1 = new Produto(null, "Computador", 2000.00);		
-		Produto p2 = new Produto(null, "Impressora", 800.00);
-		Produto p3 = new Produto(null, "Mouse", 80.00);
+		Produto produto1 = new Produto(null, "Computador", 2000.00);		
+		Produto produto2 = new Produto(null, "Impressora", 800.00);
+		Produto produto3 = new Produto(null, "Mouse", 80.00);
 		
-		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
-		cat2.getProdutos().addAll(Arrays.asList(p2));
+		cat1.getProdutos().addAll(Arrays.asList(produto1, produto2, produto3));
+		cat2.getProdutos().addAll(Arrays.asList(produto2));
 		
-		p1.getCategorias().addAll(Arrays.asList(cat1));
-		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-		p3.getCategorias().addAll(Arrays.asList(cat1));
+		produto1.getCategorias().addAll(Arrays.asList(cat1));
+		produto2.getCategorias().addAll(Arrays.asList(cat1, cat2));
+		produto3.getCategorias().addAll(Arrays.asList(cat1));
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
-		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
+		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
 		
 		
 		Estado estado1 = new Estado(null, "Minas Gerais");
@@ -116,6 +120,19 @@ public class CursoSpringbootIonicApplication implements CommandLineRunner{
 		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
 		pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2));
 	
+		
+		ItemPedido item1 = new ItemPedido(pedido1, produto1, 0.00, 1, 2000.00);
+		ItemPedido item2 = new ItemPedido(pedido1, produto3, 0.00, 2, 80.00);
+		ItemPedido item3 = new ItemPedido(pedido2, produto2, 100.00, 1, 800.00);
+		
+		pedido1.getItens().addAll(Arrays.asList(item1, item2));
+		pedido2.getItens().addAll(Arrays.asList(item3));
+		
+		produto1.getItens().addAll(Arrays.asList(item1));
+		produto2.getItens().addAll(Arrays.asList(item3));
+		produto3.getItens().addAll(Arrays.asList(item2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(item1, item2, item3));
 	}
 
 }
