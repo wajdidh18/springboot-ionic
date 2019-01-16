@@ -166,6 +166,7 @@ Depois de criada a classe auxiliar, na classe `ItemPedido`, criamos o atributo i
 public class ItemPedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	@EmbeddedId
 	private ItemPedidoChaveComposta id = new ItemPedidoChaveComposta();
 	
 	...
@@ -180,6 +181,8 @@ public class ItemPedido implements Serializable{
 	}
 	...
 ```
+
+- `@EmbeddedId` indica que esse atributo é um id embutido em um tipo auxiliar
 
 #### > @JsonManagedReference e @JsonBackReference
 
